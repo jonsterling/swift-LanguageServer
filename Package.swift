@@ -15,10 +15,12 @@ let package = Package(
 		.library(name: "LanguageServer", targets: ["LanguageServer"]),
 	],
 	dependencies: [
-		.package(url: "https://github.com/ChimeHQ/LanguageServerProtocol", from: "0.13.4"),
+		.package(url: "https://github.com/jonsterling/swift-LanguageServerProtocol", branch: "main"),
 	],
 	targets: [
-		.target(name: "LanguageServer", dependencies: ["LanguageServerProtocol"]),
+		.target(name: "LanguageServer", dependencies: [
+			.product(name: "LanguageServerProtocol", package: "swift-LanguageServerProtocol")
+		]),
 		.testTarget(name: "LanguageServerTests", dependencies: ["LanguageServer"]),
 	]
 )
